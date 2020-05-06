@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { Button, WhiteSpace } from 'antd-mobile'
 
 export default function Home() {
   return (
@@ -12,6 +13,8 @@ export default function Home() {
         <h1 className="title">
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
+        <Button type="primary">primary</Button><WhiteSpace />
+        <Button loading>loading button</Button><WhiteSpace />
 
         <p className="description">
           Get started by editing <code>pages/index.js</code>
