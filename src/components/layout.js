@@ -2,9 +2,7 @@ import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 import { NavBar, Icon, WingBlank, WhiteSpace, SearchBar } from 'antd-mobile'
 
-import './index.css'
-
-function Layout ({ children, title, description }) {
+function Layout({ children, title, description }) {
   const router = useRouter()
 
   return (
@@ -18,7 +16,7 @@ function Layout ({ children, title, description }) {
         icon={(router.pathname == "/")? null:<Icon type="left" />}
         onLeftClick={(router.pathname == "/")? null:() => router.back()}
         rightContent={[
-          <Icon key="0" type="search" />
+          (router.pathname == "/")? <Icon key="0" type="search" />:null
         ]}
       >
         {title}
