@@ -6,6 +6,16 @@
         "destination": "/_next/static/service-worker.js"
       }
     ],
+    "routes": [	
+      {	
+        "src": "^/service-worker.js$",	
+        "dest": "/_next/static/service-worker.js",
+        "headers": {
+          "cache-control": "public, max-age=43200, immutable",
+          "Service-Worker-Allowed": "/"
+        }
+      }	
+    ],
     "headers": [
       {
         "source": "/service-worker.js",
@@ -22,7 +32,6 @@
       }
     ],
     "env": {
-      "BASE_API_URL_INTERNAL": "http://localhost:3000",
       "BASE_API_URL_EXTERNAL": "https://pokeapi.co/api/v2"
     },
     "build": {
@@ -30,5 +39,11 @@
         "BASE_API_URL_INTERNAL": "http://localhost:3000",
         "BASE_API_URL_EXTERNAL": "https://pokeapi.co/api/v2"
       }
-    }
+    },
+    "builds": [
+      {
+        "src": "next.config.js",
+        "use": "@now/next"
+      }
+    ],
   }
