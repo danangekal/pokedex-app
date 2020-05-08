@@ -31,7 +31,6 @@ function Pokemon({ data }) {
     { text: 'back_shiny', icon: data.sprites.back_shiny },
   ]
 
-
   return (
     <Layout title="Detail Pokemon" description="This is detail pokemon">
      <Result
@@ -48,7 +47,7 @@ function Pokemon({ data }) {
         // onChange={(tab, index) => { console.log('onChange', index, tab); }}
         // onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '200px', backgroundColor: '#fff' }}>
+        <div style={{ height: '200px', backgroundColor: '#fff' }}>
           {data.stats.map(({ stat, base_stat, effort }, index) => (
             <div key={index}>
               <WhiteSpace size="lg" />

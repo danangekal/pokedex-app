@@ -29,34 +29,37 @@ const nextConfig = {
       })
     }
     return config
-  },
-  target: 'serverless',
-  transformManifest: manifest => ['/'].concat(manifest), 
-  dontAutoRegisterSw: true,
-  generateInDevMode: false, // for development
-  workboxOpts: {
-    swDest: 'static/service-worker.js',
-    runtimeCaching: [
-      {
-        urlPattern: /.png$/,
-        handler: 'CacheFirst'
-      },
-      {
-        urlPattern: /api/,
-        handler: 'NetworkFirst',
-        options: {
-          cacheName: 'offlineCache',
-          expiration: {
-            maxEntries: 200,
-            maxAgeSeconds: 30 * 24 * 60 * 60, // 1 month
-          },
-          cacheableResponse: {
-            statuses: [0, 200]
-          }
-        }
-      }
-    ]
-  } 
+  }
 }
 
-module.exports = withPlugins([[css], [images], [optimizedImages], [offline]], nextConfig);
+module.exports = withPlugins([
+  [css, {
+    exclude: [/node_modules/]
+  }], 
+  [images], 
+  [optimizedImages], 
+  [offline, {
+    target: 'serverless',
+    transformManifest: manifest => ['/'].concat(manifest), 
+    workboxOpts: {
+      // generateInDevMode: true,
+      swDest: 'static/service-worker.js',
+      runtimeCaching: [
+        {
+          urlPattern: /^https?.*/,
+          handler: 'NetworkFirst',
+          options: {
+            cacheName: 'https-calls',
+            expiration: {
+              maxEntries: 200,
+              maxAgeSeconds: 30 * 24 * 60 * 60, // 1 month
+            },
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+          },
+        }
+      ]
+    } 
+  }]
+], nextConfig)
