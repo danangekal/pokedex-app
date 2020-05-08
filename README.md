@@ -47,7 +47,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Demo
 
-You can check [demo](https://pokedex-app-aw4yk2bj0.now.sh/)
+You can check [demo](https://pokedex-app.danangekal.now.sh/)
 
 ## Deploy your own
 
