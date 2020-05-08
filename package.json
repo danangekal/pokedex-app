@@ -7,8 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "prebuild": "rm -rf .next",
-    "postinstall": "[ -e .env ] || cp .env.example .env"
+    "prebuild": "rm -rf .next"
   },
   "dependencies": {
     "antd-mobile": "^2.3.1",

@@ -2,7 +2,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development mode:
+First copy .env from .env.example
+
+For run the development mode:
 
 ```bash
 npm run dev
