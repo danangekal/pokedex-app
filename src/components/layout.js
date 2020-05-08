@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
-import { NavBar, Icon, WingBlank, WhiteSpace, SearchBar } from 'antd-mobile'
+import { NavBar, Icon, WingBlank, WhiteSpace } from 'antd-mobile'
 
 function Layout({ children, title, description }) {
   const router = useRouter()

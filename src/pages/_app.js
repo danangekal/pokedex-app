@@ -1,8 +1,8 @@
 import { useReducer } from 'react'
 import { DefaultSeo } from 'next-seo'
 
-import { ContextProvider } from '../components/context'
-import reducers from '../components/reducers'
+import { ContextProvider } from '../utils/context'
+import reducers from '../utils/reducers'
 import seoConfig from '../constants/seo'
 import initialState from '../constants/state'
 

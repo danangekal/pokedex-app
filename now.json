@@ -26,7 +26,6 @@
     },
     "build": {
       "env": {
-        "BASE_API_URL_INTERNAL": "http://localhost:3000",
         "BASE_API_URL_EXTERNAL": "https://pokeapi.co/api/v2"
       }
     },
