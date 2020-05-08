@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app) & [`antd-mobile`](https://mobile.ant.design/).
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
@@ -10,7 +10,7 @@ npm run dev
 yarn dev
 ```
 
-For run production mode
+For run production mode:
 
 ```bash
 # step 1
