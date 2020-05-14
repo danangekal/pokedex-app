@@ -4,8 +4,8 @@ export default async (req, res) => {
   const baseUrl = process.env.BASE_API_URL_EXTERNAL;
   const { method, query: { page } } = req;
   const paging = (page)? page:1;
-  const limit = 9;
-  const offset = (paging * limit) -limit;
+  const limit = (page)? 9:890;
+  const offset = (page)? ((paging * limit) -limit):0;
   let data = {};
 
   switch (method) {
@@ -20,7 +20,7 @@ export default async (req, res) => {
 
         if (data.results && data.results.length > 0) {
           let results = []
-          data.results.map(({ name, url }, index) => {
+          data.results.map(({ name, url }) => {
             const lengthUrl = url.length;
             const id = url.slice(34, lengthUrl-1);
             results.push({ id, name, text: `${id}. ${name}`, url, icon: `https://pokeres.bastionbot.org/images/pokemon/${id}.png` })

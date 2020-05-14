@@ -2,7 +2,7 @@ function setPokemons(data) {
   return {
     type: "SET_POKEMONS",
     payload: data
-  };
+  }
 }
 
 function setLoading() {

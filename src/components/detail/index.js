@@ -19,11 +19,11 @@ function Detail({ data }) {
   const stats = data.stats
 
   const types = data.types.map(({ type }, index) => ({
-    text: <Badge key={index} text={type.name} style={{ backgroundColor: '#0000ff', borderRadius: 2, color: '#fffff' }} />
+    text: <Badge key={index} text={type.name} style={{ backgroundColor: "#0000ff", borderRadius: 2, color: "#fffff" }} />
   }))
 
   const abilities = data.abilities.map(({ ability }, index) => ({
-    text: <Badge key={index}  text={ability.name} style={{ backgroundColor: '#ff0000', borderRadius: 2, color: '#ffffff' }} />
+    text: <Badge key={index}  text={ability.name} style={{ backgroundColor: "#ff0000", borderRadius: 2, color: "#ffffff" }} />
   }))
 
   const moves = data.moves.map(({ move }, index) => ({
@@ -49,16 +49,16 @@ function Detail({ data }) {
         // onChange={(tab, index) => { console.log('onChange', index, tab); }}
         // onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
       >
-        <div style={{ height: '200px', backgroundColor: '#fff' }}>
+        <div style={{ height: "200px", backgroundColor: "#fff" }}>
           <Stats data={stats} />
         </div>
-        <div style={{ height: '200px', backgroundColor: '#fff' }}>
+        <div style={{ height: "200px", backgroundColor: "#fff" }}>
           <Types data={types} />
         </div>
-        <div style={{ height: '200px', backgroundColor: '#fff' }}>
+        <div style={{ height: "200px", backgroundColor: "#fff" }}>
           <Abilities data={abilities} />
         </div>
-        <div style={{ height: '200px', backgroundColor: '#fff' }}>
+        <div style={{ height: "200px", backgroundColor: "#fff" }}>
           <Moves data={moves} />
         </div>
       </Tabs>
