@@ -15,7 +15,7 @@ function Home({ data, origin }) {
   }, [data])
 
   return (
-    <Layout title="Home" description="This is home pokedex app">
+    <Layout title="List Pokemon" description="This is home pokedex app">
       <List isScroll={true} origin={origin} />
     </Layout>
   )

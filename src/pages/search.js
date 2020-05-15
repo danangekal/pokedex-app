@@ -29,8 +29,8 @@ function Search({ data, origin }) {
   }
   
   return (
-    <Layout title="Search" description="This is search page">
-      <SearchBar placeholder="Search pokemon" cancelText="Cancel" onChange={handleChange} />
+    <Layout title="Search Pokomen" description="This is search page">
+      <SearchBar placeholder="Search" cancelText="Cancel" onChange={handleChange} />
       <List isScroll={false}  origin={origin} />
     </Layout>
   )

@@ -4,7 +4,7 @@ export default async (req, res) => {
   const baseUrl = process.env.BASE_API_URL_EXTERNAL;
   const { method, query: { page } } = req;
   const paging = (page)? page:1;
-  const limit = (page)? 9:890;
+  const limit = (page)? 18:890;
   const offset = (page)? ((paging * limit) -limit):0;
   let data = {};
 
