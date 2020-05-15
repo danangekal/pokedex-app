@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+import fetch from 'node-fetch'
 
 export default async (req, res) => {
   const baseUrl = process.env.BASE_API_URL_EXTERNAL;
@@ -6,7 +6,7 @@ export default async (req, res) => {
   const paging = (page)? page:1;
   const limit = (page)? 18:890;
   const offset = (page)? ((paging * limit) -limit):0;
-  let data = {};
+  let data = [];
 
   switch (method) {
     case "GET":

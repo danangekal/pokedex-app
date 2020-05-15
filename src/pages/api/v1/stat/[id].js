@@ -7,7 +7,7 @@ export default async (req, res) => {
 
   switch (method) {
     case "GET":
-        const url = `${baseUrl}/pokemon/${id}`;
+        const url = `${baseUrl}/stat/${id}`;
         const response = await fetch(url);
         try {
           data = await response.json();
