@@ -46,7 +46,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - View detail information of each pokemon (done)
 - View the image of each pokemon (done)
 - Search pokemon (done)
-- Filter list of pokemon based on an attribute of pokemon (on progress)
+- Filter list of pokemon based on an attribute of pokemon (done)
 
 ## Demo
 
