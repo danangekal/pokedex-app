@@ -2,12 +2,16 @@ import fetch from 'node-fetch'
 
 export default async (req, res) => {
   const baseUrl = process.env.BASE_API_URL_EXTERNAL;
-  const { method } = req;
-  let data = {};
+  const { method, query: { page } } = req;
+  const paging = (page)? page:1;
+  const limit = 10;
+  const offset = (paging * limit) -limit;
+  let data = [];
+
 
   switch (method) {
     case "GET":
-        const url = `${baseUrl}/ability`;
+        const url = `${baseUrl}/ability?offset=${offset}&limit=${limit}`;
         const response = await fetch(url);
         try {
           data = await response.json();
@@ -15,8 +19,14 @@ export default async (req, res) => {
           // console.log("##error fetch: ", error.message)
         }
 
-        if (data.count && data.count > 0) {
-          res.status(200).json(data);
+        if (data.results && data.results.length > 0) {
+          let results = []
+          data.results.map(({ name, url }) => {
+            const lengthUrl = url.length;
+            const id = url.slice(34, lengthUrl-1);
+            results.push({ id, name, text: name, url })
+          })
+          res.status(200).json(results);
         } else {
           res.status(404).json("Data not found");
         }

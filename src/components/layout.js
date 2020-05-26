@@ -3,6 +3,8 @@ import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 import { NavBar, Icon, WingBlank, WhiteSpace } from 'antd-mobile'
 
+import Popovers from './popover'
+
 function Layout({ children, title, description }) {
   const router = useRouter()
 
@@ -17,7 +19,8 @@ function Layout({ children, title, description }) {
         icon={(router.pathname == "/")? null:<Icon type="left" />}
         onLeftClick={(router.pathname == "/")? null:() => router.back()}
         rightContent={[
-          (router.pathname == "/")? <Link key="0" href="/search"><Icon key="0" type="search" /></Link>:null
+          (router.pathname == "/")? <Link key="0" href="/search"><Icon key="0" type="search" style={{ marginRight: "16px" }} /></Link>:null,
+          (router.pathname == "/")? <Popovers key="1" />:null
         ]}
       >
         {title}

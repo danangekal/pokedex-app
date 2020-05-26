@@ -4,7 +4,7 @@ import absoluteUrl from 'next-absolute-url'
 import { SearchBar } from 'antd-mobile'
 
 import { Context } from '../utils/context'
-import { setPokemons, setLoading } from '../utils/actions'
+import { setLoading, setPokemons, setOrigin } from '../utils/actions'
 import Layout from '../components/layout'
 import List from '../components/list'
 
@@ -12,17 +12,21 @@ function Search({ data, origin }) {
   const { dispatch } = useContext(Context)
 
   useEffect(() => {
+    dispatch(setLoading(true))
     dispatch(setPokemons([]))
-  }, [data])
+    dispatch(setLoading(false))
+    dispatch(setOrigin(origin))
+  }, [])
 
   function handleChange(value) {
     if (value) {
-      dispatch(setLoading())
-      const regex = new RegExp(`${value}`, 'i')
+      dispatch(setLoading(true))
+      const regex = new RegExp(`^${value}`, 'i')
       const result = data.filter((pokemon) => {
         return pokemon.name.match(regex)
       })
       dispatch(setPokemons(result))
+      dispatch(setLoading(false))
     } else {
       dispatch(setPokemons([]))
     }
@@ -31,7 +35,7 @@ function Search({ data, origin }) {
   return (
     <Layout title="Search Pokomen" description="This is search page">
       <SearchBar placeholder="Search" cancelText="Cancel" onChange={handleChange} />
-      <List isScroll={false}  origin={origin} />
+      <List isScroll={false} />
     </Layout>
   )
 }

@@ -2,36 +2,44 @@ import { useState, useContext } from 'react'
 import { useRouter } from 'next/router'
 import fetch from 'node-fetch'
 import InfiniteScroll from 'react-infinite-scroller'
-import { Grid, WhiteSpace, ActivityIndicator, Icon, Toast, WingBlank } from 'antd-mobile'
+import { Grid, WhiteSpace, ActivityIndicator, Toast } from 'antd-mobile'
 
-import { Context } from '../../utils/context'
-import { setLoading, setPokemons } from '../../utils/actions'
+import { Context } from '../utils/context'
+import { setLoading, setPokemons } from '../utils/actions'
 
-function List({ isScroll, origin }) {
+function List({ isScroll }) {
   const router = useRouter()
   const [hasMore, setHasMore] = useState(true)
   const { state, dispatch } = useContext(Context)
-  const { isLoading, pokemons } = state
+  const { isLoading, filter, pokemons, origin } = state
+  const splitFilter = filter.split(".")
+  const filterName = splitFilter[0]
+  const filterValueName = splitFilter[1]
   
   function handleClick({ id }) {
     router.push(`/pokemon/${id}`)
   }
   
   async function loadData(page) {
+    dispatch(setLoading(true))
     const res = await fetch(`${origin}/api/v1/pokemon?page=${page}`)
-    const newData = await res.json()
+    let newData
+    try {
+      newData = await res.json()      
+    } catch (error) {
+      newData = []
+    }
     const data = pokemons.concat(newData)
     dispatch(setPokemons(data))
-    setLoading(false)
+    dispatch(setLoading(false))
   }
 
   function handleInfiniteOnLoad(page) {
-    if (pokemons.length > 890) {
-      setHasMore(false)
-      Toast.info('This is the last data', 30)
-    } else {
-      dispatch(setLoading())
+    if (pokemons.length < 890) {
       loadData(page)
+    } else {
+      setHasMore(false)
+      Toast.info('This is the last data', 2)
     }
   }
 
@@ -47,7 +55,7 @@ function List({ isScroll, origin }) {
         )
       }
       {
-        isScroll? (
+        isScroll && !filter? (
           <InfiniteScroll
             initialLoad={false}
             pageStart={1}
@@ -57,7 +65,13 @@ function List({ isScroll, origin }) {
             <Grid data={pokemons} columnNum={3} hasLine={false} onClick={handleClick} />
           </InfiniteScroll>
         ):(
-          <Grid data={pokemons} columnNum={3} hasLine={false} onClick={handleClick} />
+          <div>
+            <div style={{ fontSize: 16 }}>
+              Result filter {filterName} <b>{filterValueName}</b>
+              <WhiteSpace />
+            </div>
+            <Grid data={pokemons} columnNum={3} hasLine={false} onClick={handleClick} />
+          </div>
         )
       }
     </>

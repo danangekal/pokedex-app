@@ -5,11 +5,26 @@ function setPokemons(data) {
   }
 }
 
-function setLoading() {
+function setLoading(data) {
   return {
-    type: "SET_LOADING"
-  };
+    type: "SET_LOADING",
+    payload: data
+  }
 }
 
-export { setPokemons, setLoading }
+function setOrigin(data) {
+  return {
+    type: "SET_ORIGIN",
+    payload: data
+  }
+}
+
+function setFilter(data) {
+  return {
+    type: "SET_FILTER",
+    payload: data
+  }
+}
+
+export { setPokemons, setLoading, setOrigin, setFilter }
   

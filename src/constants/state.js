@@ -1,6 +1,8 @@
 const state = {
   isLoading: false,
-  pokemons: []
+  pokemons: [],
+  origin: "",
+  filter: ""
 }
 
 export default state

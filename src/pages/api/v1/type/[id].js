@@ -15,8 +15,15 @@ export default async (req, res) => {
           // console.log("##error fetch: ", error.message)
         }
 
-        if (data.id) {
-          res.status(200).json(data);
+        if (data.id && data.pokemon && data.pokemon.length > 0) {
+          let results = []
+          data.pokemon.map(({ pokemon }) => {
+            const { name, url } = pokemon;
+            const lengthUrl = url.length;
+            const id = url.slice(34, lengthUrl-1);
+            results.push({ id, name, text: `${id}. ${name}`, url, icon: `https://pokeres.bastionbot.org/images/pokemon/${id}.png` })
+          })
+          res.status(200).json(results);
         } else {
           res.status(404).json("Data not found");
         }

@@ -1,9 +1,10 @@
 import { useEffect, useContext } from 'react'
 import fetch from 'node-fetch'
 import absoluteUrl from 'next-absolute-url'
+import { WhiteSpace } from 'antd-mobile'
 
 import { Context } from '../utils/context'
-import { setPokemons } from '../utils/actions'
+import { setLoading, setPokemons, setOrigin } from '../utils/actions'
 import Layout from '../components/layout'
 import List from '../components/list'
 
@@ -11,12 +12,15 @@ function Home({ data, origin }) {
   const { dispatch } = useContext(Context)
 
   useEffect(() => {
+    dispatch(setLoading(true))
     dispatch(setPokemons(data))
-  }, [data])
+    dispatch(setLoading(false))
+    dispatch(setOrigin(origin))
+  }, [])
 
   return (
     <Layout title="List Pokemon" description="This is home pokedex app">
-      <List isScroll={true} origin={origin} />
+      <List isScroll={true} />
     </Layout>
   )
 }
