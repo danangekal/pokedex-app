@@ -33,6 +33,8 @@ npm run start
 yarn start
 ```
 
+Noted: Use node >= 10.13.0
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Technology
