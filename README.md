@@ -2,7 +2,14 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First copy .env from .env.example
+First copy .env from .env.example 
+
+Install package:
+```bash
+npm run install
+# or
+yarn install
+```
 
 For run the development mode:
 
