@@ -29,5 +29,9 @@
     "@zeit/next-css": "^1.0.1",
     "babel-plugin-import": "^1.13.0",
     "null-loader": "^4.0.0"
+  },
+  "engines": {
+    "npm": ">=6",
+    "node": ">=14"
   }
 }
